@@ -50,13 +50,21 @@
 }
 
 .slide.in.animate,
-.slide.in.reverse,
+.slide.in.reverse.animate,
 .slide.out.reverse,
 .slide.out {
 	-webkit-transform: translateX(0);
 	   -moz-transform: translateX(0);
 	     -o-transform: translateX(0);
 		    transform: translateX(0);
+}
+
+.slide.in.reverse,
+.slide.out.animate {
+	-webkit-transform: translateX(-100%);
+	   -moz-transform: translateX(-100%);
+	     -o-transform: translateX(-100%);
+		    transform: translateX(-100%);
 }
 
 .slidedown.in.reverse,
