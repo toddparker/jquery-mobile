@@ -17,11 +17,8 @@
  * called "manually". The optional third argument allows you to define a custom timeout or
  * disable it completely (by passing 0 or false).
  */
-$.fn.jqmTransition = function( classes, callback, timeout ) {
+$.fn.jqmTransition = function( classes ) {
 	console.log("jqmTransition( '"+classes+"')" );
-	if ( typeof timeout == "undefined" ) {
-		timeout = 1000;
-	}
 	if ( $.support.cssTransitions ) {
 		var $this = $( this );
 		var fallbackTimeout = null;
@@ -33,15 +30,11 @@ $.fn.jqmTransition = function( classes, callback, timeout ) {
 			$this.removeClass( "animate " + classes );
 			return result;
 		};
-		$this.one( "transitionend webkitTransitionEnd OTransitionEnd webkitAnimationEnd", handler );
-		if ( timeout ) {
-			fallbackTimeout = setTimeout( handler, timeout );
-		}
 		// add animate class to start animation
 		$this.addClass( classes );
 		setTimeout(function() {
 			$this.addClass( "animate" );
-		}, 0 );
+		}, 25 );
 		return $this;
 	} else {
 		// defer execution for consistency between webkit/non webkit
@@ -66,13 +59,20 @@ function makeCss3TransitionHandler(isTwoMovingParts) {
 				deferred.resolve( name, reverse, $to, $from );
 			};
 
+		if ( !reverse ) {
+			$to.transitionComplete( doneFunc );
+		} else {
+			$from.transitionComplete( doneFunc );
+		}
+
 		$to.parent().addClass( viewportClass );
 		if ( $from ) {
-			$from.jqmTransition( name + " out" + reverseClass, ( !isTwoMovingParts || reverse )?doneFunc:undefined);
+			$from.jqmTransition( name + " out" + reverseClass);
 		}
 		$to.addClass( $.mobile.activePageClass );
-		if ( ( isTwoMovingParts || !reverse ) ) {
-			$to.jqmTransition( name + " in" + reverseClass, doneFunc );
+
+		if ( isTwoMovingParts || !reverse ) {
+			$to.jqmTransition( name + " in" + reverseClass);
 		}
 
 		return deferred.promise();
