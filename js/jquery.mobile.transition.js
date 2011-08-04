@@ -19,28 +19,23 @@
  */
 $.fn.jqmTransition = function( classes ) {
 	console.log("jqmTransition( '"+classes+"')" );
-	if ( $.support.cssTransitions ) {
-		var $this = $( this );
-		var fallbackTimeout = null;
-		var handler = function() {
+	var $this = $( this ),
+	    fallbackTimeout = null,
+	    handler = function() {
 			if ( fallbackTimeout ) {
 				clearTimeout( fallbackTimeout );
 			}
-			var result = callback ? callback.apply( this, arguments ) : undefined;
 			$this.removeClass( "animate " + classes );
-			return result;
 		};
+
+	if ( $.support.cssTransitions ) {
 		// add animate class to start animation
 		$this.addClass( classes );
 		setTimeout(function() {
 			$this.addClass( "animate" );
 		}, 25 );
-		return $this;
-	} else {
-		// defer execution for consistency between webkit/non webkit
-		setTimeout( callback, 25 );
-		return $( this );
 	}
+	return $this;
 };
 
 function makeCss3TransitionHandler(isTwoMovingParts) {
