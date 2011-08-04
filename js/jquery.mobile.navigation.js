@@ -539,6 +539,7 @@
 	//transition handler dictionary for 3rd party transitions
 	$.mobile.transitionHandlers = {
 		none: $.mobile.defaultTransitionHandler,
+		slide: $.mobile.noneTransitionHandler,
 		flip: $.mobile.noneTransitionHandler
 	};
 

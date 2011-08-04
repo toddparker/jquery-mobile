@@ -87,6 +87,11 @@ if ( $.mobile.defaultTransitionHandler === $.mobile.noneTransitionHandler ) {
 	$.mobile.defaultTransitionHandler = $.mobile.css3TransitionHandler;
 }
 
+// If the slide transition handler is the 'none' handler, replace it with our handler.
+if ( $.mobile.transitionHandlers.slide === $.mobile.noneTransitionHandler ) {
+	$.mobile.transitionHandlers.slide = makeCss3TransitionHandler(true);
+}
+
 // If the flip transition handler is the 'none' handler, replace it with our handler.
 if ( $.mobile.transitionHandlers.flip === $.mobile.noneTransitionHandler ) {
 	$.mobile.transitionHandlers.flip = makeCss3TransitionHandler(true);
