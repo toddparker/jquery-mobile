@@ -22,14 +22,13 @@
 	        transition: 350ms ease-in-out;
 }
 
-.in,
-.out.animate {
-	z-index: 10;
-}
-
-.out,
-.in.reverse.animate {
-	z-index: 0;
+/* To avoid flashing, we need to make sure we toggle
+ * the display/visibility of the page that is being
+ * transitioned to at the same time we set its z-index.
+ */
+.ui-page.in {
+	display: block;
+	visibility: visible;
 }
 
 .slide.animate,
@@ -42,6 +41,16 @@
 }
 
 .slide.in,
+.slide.in.reverse {
+	z-index: 10;
+}
+
+.slide.out,
+.slide.out.reverse {
+	z-index: 0;
+}
+
+.slide.in,
 .slide.out.reverse.animate {
 	-webkit-transform: translateX(100%);
 	   -moz-transform: translateX(100%);
@@ -51,8 +60,8 @@
 
 .slide.in.animate,
 .slide.in.reverse.animate,
-.slide.out.reverse,
-.slide.out {
+.slide.out,
+.slide.out.reverse {
 	-webkit-transform: translateX(0);
 	   -moz-transform: translateX(0);
 	     -o-transform: translateX(0);
@@ -64,10 +73,31 @@
 	-webkit-transform: translateX(-100%);
 	   -moz-transform: translateX(-100%);
 	     -o-transform: translateX(-100%);
-	        transform: translateX(-100%);
+		    transform: translateX(-100%);
+}
+
+.slidedown.in,
+.slidedown.out.reverse,
+.slideup.in,
+.slideup.out.reverse {
+	z-index: 10;
 }
 
 .slidedown.in.reverse,
+.slidedown.out,
+.slideup.in.reverse,
+.slideup.out {
+	z-index: 0;
+}
+
+.slidedown.in,
+.slidedown.out.reverse.animate {
+	-webkit-transform: translateY(-100%);
+	   -moz-transform: translateY(-100%);
+	     -o-transform: translateY(-100%);
+		    transform: translateY(-100%);
+}
+
 .slideup.in,
 .slideup.out.reverse.animate {
 	-webkit-transform: translateY(100%);
@@ -77,24 +107,17 @@
 }
 
 .slidedown.in.animate,
-.slidedown.in.reverse.animate,
+.slidedown.in.reverse,
 .slidedown.out,
+.slidedown.out.reverse,
 .slideup.in.animate,
-.slideup.in.reverse.animate,
-.slideup.out {
+.slideup.in.reverse,
+.slideup.out,
+.slideup.out.reverse {
 	-webkit-transform: translateY(0);
 	   -moz-transform: translateY(0);
 	     -o-transform: translateY(0);
 		    transform: translateY(0);
-}
-
-.slidedown.in,
-.slidedown.out.reverse.animate,
-.slideup.in.reverse {
-	-webkit-transform: translateY(-100%);
-	   -moz-transform: translateY(-100%);
-	     -o-transform: translateY(-100%);
-		    transform: translateY(-100%);
 }
 
 .fade.animate {
@@ -162,6 +185,17 @@
 	-webkit-transform: rotateY(-180deg) scale(.8);
 }
 
+.pop.in,
+.pop.out.reverse {
+	z-index: 10;
+}
+
+.pop.in.reverse,
+.pop.out {
+	z-index: 0;
+}
+
+
 .pop.animate {
 	-webkit-transition-property: -webkit-transform, opacity;
 	   -moz-transition-property:    -moz-transform, opacity;
@@ -183,9 +217,9 @@
 	     -o-transform: scale(.2);
 	        transform: scale(.2);
 	opacity: 0;
-	z-index: 10;
 }
 
+.pop.in.reverse,
 .pop.in.animate,
 .pop.out.reverse{
 	-webkit-transform: scale(1.0);
@@ -193,7 +227,6 @@
 	     -o-transform: scale(1.0);
 	        transform: scale(1.0);
     opacity: 1;
-	z-index: 10;
 }
 
 @-o-viewport {
