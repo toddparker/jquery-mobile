@@ -32,14 +32,18 @@ $.widget( "mobile.listview", $.mobile.widget, {
 			return orig + " ui-listview " + ( t.options.inset ? " ui-listview-inset ui-corner-all ui-shadow " : "" );
 		});
 
-		t.refresh();
+		t.refresh( true );
 	},
 
 	_itemApply: function( $list, item ) {
+		var $countli = item.find( ".ui-li-count" );
+		if ( $countli.length ) {
+			item.addClass( "ui-li-has-count" );
+		}
+		$countli.addClass( "ui-btn-up-" + ( $list.jqmData( "counttheme" ) || this.options.countTheme ) + " ui-btn-corner-all" );
+
 		// TODO class has to be defined in markup
-		item.find( ".ui-li-count" )
-			.addClass( "ui-btn-up-" + ( $list.jqmData( "counttheme" ) || this.options.countTheme ) + " ui-btn-corner-all" ).end()
-		.find( "h1, h2, h3, h4, h5, h6" ).addClass( "ui-li-heading" ).end()
+		item.find( "h1, h2, h3, h4, h5, h6" ).addClass( "ui-li-heading" ).end()
 		.find( "p, dl" ).addClass( "ui-li-desc" ).end()
 		.find( ">img:eq(0), .ui-link-inherit>img:eq(0)" ).addClass( "ui-li-thumb" ).each(function() {
 			item.addClass( $(this).is( ".ui-li-icon" ) ? "ui-li-has-icon" : "ui-li-has-thumb" );
@@ -62,6 +66,43 @@ $.widget( "mobile.listview", $.mobile.widget, {
 			li.removeClass( bot );
 		} else {
 			li.removeClass( top + " " + bot );
+		}
+	},
+
+	_refreshCorners: function( create ) {
+		var $li,
+			$visibleli,
+			$topli,
+			$bottomli;
+
+		if ( this.options.inset ) {
+			$li = this.element.children( "li" );
+			// at create time the li are not visible yet so we need to rely on .ui-screen-hidden
+			$visibleli = create?$li.not( ".ui-screen-hidden" ):$li.filter( ":visible" );
+			
+			this._removeCorners( $li );
+
+			// Select the first visible li element
+			$topli = $visibleli.first()
+				.addClass( "ui-corner-top" );
+
+			$topli.add( $topli.find( ".ui-btn-inner" ) )
+				.find( ".ui-li-link-alt" )
+					.addClass( "ui-corner-tr" )
+				.end()
+				.find( ".ui-li-thumb" )
+					.addClass( "ui-corner-tl" );
+
+			// Select the last visible li element
+			$bottomli = $visibleli.last()
+				.addClass( "ui-corner-bottom" );
+
+			$bottomli.add( $bottomli.find( ".ui-btn-inner" ) )
+				.find( ".ui-li-link-alt" )
+					.addClass( "ui-corner-br" )
+				.end()
+				.find( ".ui-li-thumb" )
+					.addClass( "ui-corner-bl" );
 		}
 	},
 
@@ -150,40 +191,6 @@ $.widget( "mobile.listview", $.mobile.widget, {
 				}
 			}
 
-			if ( o.inset ) {
-				if ( pos === 0 ) {
-					itemClass += " ui-corner-top";
-
-					item.add( item.find( ".ui-btn-inner" ) )
-						.find( ".ui-li-link-alt" )
-							.addClass( "ui-corner-tr" )
-						.end()
-						.find( ".ui-li-thumb" )
-							.addClass( "ui-corner-tl" );
-
-					if ( item.next().next().length ) {
-						self._removeCorners( item.next() );
-					}
-				}
-
-				if ( pos === li.length - 1 ) {
-					itemClass += " ui-corner-bottom";
-
-					item.add( item.find( ".ui-btn-inner" ) )
-						.find( ".ui-li-link-alt" )
-							.addClass( "ui-corner-br" )
-						.end()
-						.find( ".ui-li-thumb" )
-							.addClass( "ui-corner-bl" );
-
-					if ( item.prev().prev().length ) {
-						self._removeCorners( item.prev() );
-					} else if ( item.prev().length ) {
-						self._removeCorners( item.prev(), "bottom" );
-					}
-				}
-			}
-
 			if ( counter && itemClass.indexOf( "ui-li-divider" ) < 0 ) {
 				countParent = item.is( ".ui-li-static:first" ) ? item : item.find( ".ui-link-inherit" );
 
@@ -193,10 +200,10 @@ $.widget( "mobile.listview", $.mobile.widget, {
 
 			item.add( item.children( ".ui-btn-inner" ) ).addClass( itemClass );
 
-			if ( !create ) {
-				self._itemApply( $list, item );
-			}
+			self._itemApply( $list, item );
 		}
+		
+		this._refreshCorners( create );
 	},
 
 	//create a string for ID/subpage url creation
