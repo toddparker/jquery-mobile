@@ -132,7 +132,9 @@ ok( true, "active page is " + selector + " -- " + ap[0].className + " -- " + ap[
 
 			ok( true, "p1HashChangeCallback notification was triggered" );
 			ok( $( "#page-2" ).hasClass( "fade" ), "#page-2 has 'fade' class" );
+			ok( $( "#page-2" ).hasClass( "reverse" ), "#page-2 has 'reverse' class" );
 			ok( $( "#page-1" ).hasClass( "fade" ), "#page-1 has 'fade' class" );
+			ok( $( "#page-1" ).hasClass( "reverse" ), "#page-1 has 'reverse' class" );
 		}
 
 		function p2HashChangeCallback()
@@ -140,8 +142,10 @@ ok( true, "active page is " + selector + " -- " + ap[0].className + " -- " + ap[
 			p2HashChangeCalled = true;
 
 			ok( true, "p2HashChangeCallback notification was triggered" );
-			ok( $( "#page-3" ).hasClass( "slideup" ), "#page-2 has 'slideup' class" );
-			ok( $( "#page-2" ).hasClass( "slideup" ), "#page-1 has 'slideup' class" );
+			ok( $( "#page-3" ).hasClass( "slideup" ), "#page-3 has 'slideup' class" );
+			ok( $( "#page-3" ).hasClass( "reverse" ), "#page-3 has 'reverse' class" );
+			ok( $( "#page-2" ).hasClass( "slideup" ), "#page-2 has 'slideup' class" );
+			ok( $( "#page-2" ).hasClass( "reverse" ), "#page-2 has 'reverse' class" );
 		}
 
 		// The basic idea for this test is to go from page-1 to page-2 with a 'fade'
