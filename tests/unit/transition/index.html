@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>jQuery Mobile Transition Test Suite</title>
+
+	<script src="../../../js/jquery.js"></script>
+	<script src="../jquery.setNameSpace.js"></script>
+	<script src="../../../js/"></script>
+	<script src="../../../tests/jquery.testHelper.js"></script>
+
+
+	<link rel="stylesheet" href="../../../external/qunit.css"/>
+	<script src="../../../external/qunit.js"></script>
+
+	<script src="transition_core.js"></script>
+</head>
+<body>
+
+<h1 id="qunit-header">jQuery Mobile Page Test Suite</h1>
+<h2 id="qunit-banner"></h2>
+<h2 id="qunit-userAgent"></h2>
+<ol id="qunit-tests">
+</ol>
+
+<div id="page-1" data-nstest-role="page">
+	<a id="trans-default" href="#page-2"></a>
+	<a id="trans-dialog-default" href="#page-2" rel="dialog"></a>
+	<a id="trans-flip" href="#page-2" data-nstest-transition="flip"></a>
+	<a id="trans-fade" href="#page-2" data-nstest-transition="fade"></a>
+	<a id="trans-pop" href="#page-2" data-nstest-transition="pop"></a>
+	<a id="trans-slide" href="#page-2" data-nstest-transition="slide"></a>
+	<a id="trans-slideup" href="#page-2" data-nstest-transition="slideup"></a>
+	<a id="trans-slidedown" href="#page-2" data-nstest-transition="slidedown"></a>
+
+	<a id="dialog-link" href="#page-3" data-nstest-rel="dialog"></a>
+</div>
+<div id="page-2" data-nstest-role="page">
+	<a id="page-2-back-btn" href="#page-1" data-nstest-rel="back"></a>
+	<a id="p2-trans-slideup" href="#page-3" data-nstest-transition="slideup"></a>
+</div>
+
+<div id="page-3" data-nstest-role="page">
+	<a id="page-3-back-btn" href="#page-2" data-nstest-rel="back"></a>
+</div>
+
+</body>
+</html>

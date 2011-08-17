@@ -864,9 +864,10 @@
 					//clear out the active button state
 					removeActiveLinkClass( true );
 
+					settings.pageContainer.trigger("changepagefailed");
+
 					//release transition lock so navigation is free again
 					releasePageTransitionLock();
-					settings.pageContainer.trigger("changepagefailed");
 				});
 			return;
 		}
@@ -976,10 +977,10 @@
 				//remove initial build class (only present on first pageshow)
 				$html.removeClass( "ui-mobile-rendering" );
 
-				releasePageTransitionLock();
-
 				// Let listeners know we're all done changing the current page.
 				mpc.trigger( "changepage" );
+
+				releasePageTransitionLock();
 			});
 	};
 
