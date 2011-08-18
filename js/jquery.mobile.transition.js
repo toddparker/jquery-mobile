@@ -45,6 +45,13 @@ function css3TransitionsHandler( name, reverse, $to, $from ) {
 		// for this notification that will never come.
 
 		doneTimer = 0,
+		
+		// We use a timer to place the 'animate' class on the 'to' and
+		// 'from' elements to kick-off any CSS3 transitions. We need to
+		// track the timer id so we can kill it, just in case the doneFunc
+		// fires.
+
+		animateTimer = 0,
 
 		// When the transition completes, we need to do some clean-up
 		// of the CSS classes we placed on the "to" and "from" elements.
@@ -59,6 +66,14 @@ function css3TransitionsHandler( name, reverse, $to, $from ) {
 			if ( doneTimer ) {
 				clearTimeout( doneTimer );
 				doneTimer = 0;
+			}
+
+			// Make sure to clear the animation timer just in
+			// case the doneFunc fires before it does.
+
+			if ( animateTimer ) {
+				clearTimeout( animateTimer );
+				animateTimer = 0;
 			}
 
 			// Only one page can ever have the activePageClass on it,
@@ -115,8 +130,9 @@ function css3TransitionsHandler( name, reverse, $to, $from ) {
 	// rules for the "to" and "from" elements that specify new CSS property values
 	// that will kick-off the transitions.
 
-	setTimeout(function(){
-		$both.addClass("animate");
+	animateTimer = setTimeout(function() {
+		animateTimer = 0;
+		$both.addClass( "animate" );
 	}, css3TransitionsHandler.animateClassInterval );
 
 	// After we've set up and started the transitions, return a promise to the
