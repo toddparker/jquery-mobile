@@ -137,16 +137,13 @@ $.widget( "mobile.slider", $.mobile.widget, {
 
 						if ( self.beforeStart === control[ 0 ].selectedIndex ) {
 							//tap occurred, but value didn't change. flip it!
-							self.refresh( !self.beforeStart ? 1 : 0 );
+							handle
+								.addClass( "ui-slider-handle-snapping" )
+								.transitionComplete( function() {
+									handle.removeClass( "ui-slider-handle-snapping" );
+								});
+							self.refresh( !control[ 0 ].selectedIndex ? 1 : 0 );
 						}
-						var curval = val();
-						var snapped = Math.round( curval / ( max - min ) * 100 );
-						handle
-							.addClass( "ui-slider-handle-snapping" )
-							.css( "left", snapped + "%" )
-							.animationComplete( function() {
-								handle.removeClass( "ui-slider-handle-snapping" );
-							});
 					}
 					return false;
 				}
