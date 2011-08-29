@@ -245,12 +245,15 @@
 				var self = this;
 
 				if ( self.menuType == "page" ) {
+					// TODO centralize page removal binding / handling in the page plugin.
+					// Suggestion from @jblas to do refcounting
+					//
 					// rebind the page remove that was unbound in the open function
 					// to allow for the parent page removal from actions other than the use
 					// of a dialog sized custom select
 					if( !self.thisPage.data("page").options.domCache ){
 						self.thisPage.bind( "pagehide.remove", function() {
-							$(this).remove();
+							$(self).remove();
 						});
 					}
 

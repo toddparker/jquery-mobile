@@ -8,7 +8,7 @@
 
 var fakeBody = $( "<body>" ).prependTo( "html" ),
 	fbCSS = fakeBody[ 0 ].style,
-	vendors = [ "webkit", "moz", "o" ],
+	vendors = [ "Webkit", "Moz", "O" ],
 	webos = "palmGetResource" in window, //only used to rule out scrollTop
 	bb = window.blackberry; //only used to rule out box shadow, as it's filled opaque on BB
 
@@ -67,7 +67,7 @@ $.extend( $.support, {
 	orientation: "orientation" in window,
 	touch: "ontouchend" in document,
 	cssTransitions: !!propExists( "transitionProperty" ),
-	pushState: !!history.pushState,
+	pushState: "pushState" in history && "replaceState" in history,
 	mediaquery: $.mobile.media( "only all" ),
 	cssPseudoElement: !!propExists( "content" ),
 	boxShadow: !!propExists( "boxShadow" ) && !bb,
