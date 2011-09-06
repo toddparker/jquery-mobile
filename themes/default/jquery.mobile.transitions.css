@@ -22,13 +22,13 @@
 	        transition: 350ms ease-in-out;
 }
 
-/* To avoid flashing, we need to make sure we toggle
- * the display/visibility of the page that is being
- * transitioned to at the same time we set its z-index.
+/* By default, all pages are hidden offscreen. Since the 'out' page
+ * is already visible (via ui-page-active class), we need to make sure
+ * the 'in' page is visible too.
  */
 .ui-page.in {
-	display: block;
-	visibility: visible;
+	left: 0;
+	overflow: visible;
 }
 
 .slide.animate,

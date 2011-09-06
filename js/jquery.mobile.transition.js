@@ -88,11 +88,10 @@ function css3TransitionsHandler( name, reverse, $to, $from ) {
 
 			// Now strip off the transition classes used to animate
 			// the elements.
-
-			$both.removeClass( "out in reverse animate " + name );
+//			$both.removeClass( "out in reverse animate " + name );
+			$to.removeClass( "out in reverse animate " + name );
 
 			$to.parent().removeClass( viewportClass );
-
 			// Tell the caller of the transition handler that we're
 			// all done.
 
@@ -109,6 +108,7 @@ function css3TransitionsHandler( name, reverse, $to, $from ) {
 	// if we haven't recieved a "transitionend" notification within the alotted time.
 
 	doneTimer = setTimeout(function() {
+alert("uh-oh done timer fired!");
 		if( $.support.cssTransitions ) {
 			$to.unbind( "transitionend webkitTransitionEnd OTransitionEnd", doneFunc );
 		}
@@ -124,7 +124,11 @@ function css3TransitionsHandler( name, reverse, $to, $from ) {
 		$from.addClass( name + " out" + reverseClass );
 	}
 
+	$to.removeClass( "out in reverse animate " + ( $to.data("last-transition") || "" ) );
+
 	$to.addClass( name + " in" + reverseClass );
+
+	$both.data("last-transition", name);
 
 	// Fire off a timer that will add the "animate" class which triggers the CSS
 	// rules for the "to" and "from" elements that specify new CSS property values
