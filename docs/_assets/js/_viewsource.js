@@ -13,7 +13,7 @@ $.fn.addSourceLink = function(style){
 				"</div>" )
 				.appendTo( "body" )
 				.page();
-				
+
 		$('<a href="#">View Source</a>')
 			.buttonMarkup({
 				icon: 'arrow-u',
@@ -30,10 +30,10 @@ $.fn.addSourceLink = function(style){
 				page.find('.ui-btn-left').click(function(){
 					$.changePage(activepage, 'slideup',true);
 					return false;
-				});						
-			})	
+				});
+			})
 			.insertAfter(this);
-		});	
+		});
 };
 
 //set up view source links

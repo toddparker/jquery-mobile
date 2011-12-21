@@ -26,5 +26,5 @@
 
 @media all and (min-width: 450px){
 	.ui-controlgroup-label { vertical-align: top; display: inline-block;  width: 20%;  margin: 0 2% 0 0;  }
-	.ui-controlgroup-controls { width: 60%; display: inline-block; } 
-}	
+	.ui-controlgroup-controls { width: 60%; display: inline-block; }
+}

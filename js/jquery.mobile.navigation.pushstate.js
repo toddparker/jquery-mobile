@@ -62,7 +62,7 @@
 			if( self.onHashChangeDisabled ){
 				return;
 			}
-			
+
 			var href, state,
 				hash = location.hash,
 				isPath = $.mobile.path.isPath( hash );

@@ -12,7 +12,7 @@ a.ui-slider-handle .ui-btn-inner { padding-left: 0; padding-right: 0; }
 @media all and (min-width: 480px){
 	label.ui-slider { display: inline-block;  width: 20%;  margin: 0 2% 0 0; }
 	div.ui-slider { width: 45%; }
-}	
+}
 
 div.ui-slider-switch { height: 32px;  overflow: hidden; margin-left: 0; }
 div.ui-slider-inneroffset { margin-left: 50%; position: absolute; top: 1px; height: 100%; width: 50%; }

@@ -26,7 +26,7 @@ $.testHelper.excludeFileProtocol(function(){
 
 		window.history.pushState = function(){};
 		window.history.replaceState = function(){};
-		
+
 		$.mobile.media = function(){ return true; };
 
 		$.testHelper.reloadLib(libName);

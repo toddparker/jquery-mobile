@@ -7,13 +7,13 @@ $('.page-map').live("pagecreate", function() {
 	//boston :)
 	var lat = 42.35843,
 		lng = -71.059773;
-	
+
 	//try to get GPS coords
 	if( navigator.geolocation ) {
-			
-		//redirect function for successful location	
+
+		//redirect function for successful location
 		function gpsSuccess(pos){
-			if( pos.coords ){ 
+			if( pos.coords ){
 				lat = pos.coords.latitude;
 				lng = pos.coords.longitude;
 			}
@@ -21,12 +21,12 @@ $('.page-map').live("pagecreate", function() {
 				lat = pos.latitude;
 				lng = pos.longitude;
 			}
-		}	
-		
+		}
+
 		function gpsFail(){
 			//Geo-location is supported, but we failed to get your coordinates. Workaround here perhaps?
 		}
-		
+
 		navigator.geolocation.getCurrentPosition(gpsSuccess, gpsFail, {enableHighAccuracy:true, maximumAge: 300000});
 	}
 
@@ -35,7 +35,7 @@ $('.page-map').live("pagecreate", function() {
 	$.getScript('http://www.google.com/jsapi?key=YOURAPIKEY',function(){
 		lat = google.loader.ClientLocation.latitude;
 		lng = google.loader.ClientLocation.longitude;
-	});			
+	});
 	*/
 
 	var latlng = new google.maps.LatLng(lat, lng);

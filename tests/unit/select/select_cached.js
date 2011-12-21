@@ -67,7 +67,7 @@
 			start
 		]);
 	});
-	
+
 	asyncTest( "dialog sized select shouldn't rebind its parent page remove handler when closing, if the parent page domCache option is true", function(){
 		expect( 3 );
 
