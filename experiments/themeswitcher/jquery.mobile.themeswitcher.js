@@ -12,9 +12,9 @@
 						'<div data-'+ $.mobile.ns +'role=\'content\' data-'+ $.mobile.ns +'theme=\'c\'><ul data-'+ $.mobile.ns +'role=\'listview\' data-'+ $.mobile.ns +'inset=\'true\'></ul></div>'+
 					'</div>' )
 					.appendTo( $.mobile.pageContainer ),
-			menu = menuPage.find('ul');	
-		
-		//menu items	
+			menu = menuPage.find('ul');
+
+		//menu items
 		$.each(themes, function( i ){
 			$('<li><a href="#" data-'+ $.mobile.ns +'rel="back">' + themes[ i ].charAt(0).toUpperCase() + themes[ i ].substr(1) + '</a></li>')
 				.bind("vclick", function(){
@@ -23,8 +23,8 @@
 					return false;
 				})
 				.appendTo(menu);
-		});	
-		
+		});
+
 		//remover, adder
 		function addTheme(theme){
 			$('head').append( '<link rel=\'stylesheet\' href=\''+ themesDir + theme +'/\' />' );
@@ -33,5 +33,5 @@
 		//create page, listview
 		menuPage.page();
 
-	};	
+	};
 })(jQuery);

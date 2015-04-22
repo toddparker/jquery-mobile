@@ -8,7 +8,7 @@ $(function() {
 		"inch": "\"",
 		"centimeter": "cm"
 	};
-	
+
 	function list() {
 		var ul = $( "#conversions" ).empty(),
 			ulEdit = $( "#edit-conversions" ).empty();
@@ -68,7 +68,7 @@ $(function() {
 		list();
 		return false;
 	});
-	
+
 	$( "#edit-conversions" ).click(function( event ) {
 		var target = $( event.target ).closest( ".deletebutton" );
 		if ( target.length ) {

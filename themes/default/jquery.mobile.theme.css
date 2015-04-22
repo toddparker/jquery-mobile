@@ -21,10 +21,10 @@
 	background-image:      -o-linear-gradient(top, #3c3c3c, #111); /* Opera 11.10+ */
 	background-image:         linear-gradient(top, #3c3c3c, #111);
 }
-.ui-bar-a, 
-.ui-bar-a input, 
-.ui-bar-a select, 
-.ui-bar-a textarea, 
+.ui-bar-a,
+.ui-bar-a input,
+.ui-bar-a select,
+.ui-bar-a textarea,
 .ui-bar-a button {
 	font-family: Helvetica, Arial, sans-serif;
 }
@@ -46,7 +46,7 @@
 	background-image:    -moz-linear-gradient(top, #666, #222); /* FF3.6 */
 	background-image:     -ms-linear-gradient(top, #666, #222); /* IE10 */
 	background-image:      -o-linear-gradient(top, #666, #222); /* Opera 11.10+ */
-	background-image:         linear-gradient(top, #666, #222);	
+	background-image:         linear-gradient(top, #666, #222);
 }
 .ui-body-a,
 .ui-body-a input,
@@ -557,7 +557,7 @@
 }
 
 
-/* links within "buttons" 
+/* links within "buttons"
 -----------------------------------------------------------------------------------------------------------*/
 
 a.ui-link-inherit {
@@ -704,11 +704,11 @@ a.ui-link-inherit {
 @media only screen and (-webkit-min-device-pixel-ratio: 1.5),
        only screen and (min--moz-device-pixel-ratio: 1.5),
        only screen and (min-resolution: 240dpi) {
-	
+
 	.ui-icon-plus, .ui-icon-minus, .ui-icon-delete, .ui-icon-arrow-r,
 	.ui-icon-arrow-l, .ui-icon-arrow-u, .ui-icon-arrow-d, .ui-icon-check,
 	.ui-icon-gear, .ui-icon-refresh, .ui-icon-forward, .ui-icon-back,
-	.ui-icon-grid, .ui-icon-star, .ui-icon-alert, .ui-icon-info, .ui-icon-home, .ui-icon-search, 
+	.ui-icon-grid, .ui-icon-star, .ui-icon-alert, .ui-icon-info, .ui-icon-home, .ui-icon-search,
 	.ui-icon-checkbox-off, .ui-icon-checkbox-on, .ui-icon-radio-off, .ui-icon-radio-on {
 		background-image: url(images/icons-36-white.png);
 		-moz-background-size: 776px 18px;
@@ -804,7 +804,7 @@ a.ui-link-inherit {
 }
 .ui-icon-checkbox-off,
 .ui-icon-radio-off {
-	background-color: transparent;	
+	background-color: transparent;
 }
 .ui-icon-checkbox-on,
 .ui-checkbox-on .ui-icon,
@@ -892,19 +892,19 @@ a.ui-link-inherit {
 /* radius clip workaround for cleaning up corner trapping */
 .ui-corner-tl,
 .ui-corner-tr,
-.ui-corner-bl, 
+.ui-corner-bl,
 .ui-corner-br,
 .ui-corner-top,
-.ui-corner-bottom, 
+.ui-corner-bottom,
 .ui-corner-right,
 .ui-corner-left,
 .ui-corner-all,
 .ui-btn-corner-tl,
 .ui-btn-corner-tr,
-.ui-btn-corner-bl, 
+.ui-btn-corner-bl,
 .ui-btn-corner-br,
 .ui-btn-corner-top,
-.ui-btn-corner-bottom, 
+.ui-btn-corner-bottom,
 .ui-btn-corner-right,
 .ui-btn-corner-left,
 .ui-btn-corner-all {
